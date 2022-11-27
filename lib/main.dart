@@ -105,7 +105,7 @@ class _FirstRouteState extends State<FirstRoute> {
               },
               child: Card(
                 margin: const EdgeInsets.all(16),
-                color: Color.fromARGB(255, 46, 46, 46),
+                color: const Color.fromARGB(255, 46, 46, 46),
                 child: Row(
                   children: [
                     Expanded(
@@ -136,8 +136,13 @@ class _FirstRouteState extends State<FirstRoute> {
                             title: Text('x8', style: textStyle2),
                             dense: true,
                           ),
-                          const ListTile(
-                            title: Text("\$ 2200", style: textStyle2),
+                          ListTile(
+                            title: TextButton(
+                              onPressed: () {},
+                              style: TextButton.styleFrom(
+                                  backgroundColor: Colors.purple),
+                              child: const Text("\$ 2200", style: textStyle2),
+                            ),
                             dense: true,
                           ),
                           const ListTile(
