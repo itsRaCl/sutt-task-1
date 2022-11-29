@@ -271,8 +271,12 @@ class SecondRoute extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Image.asset(
-          'assets/download.jpeg',
+        Container(
+          width: MediaQuery.of(context).size.width,
+          child: Image.asset(
+            'assets/download.jpeg',
+            fit: BoxFit.fill,
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 0),
