@@ -76,6 +76,7 @@ class _FirstRouteState extends State<FirstRoute> {
       fontSize: 50,
     );
     const textStyle2 = TextStyle(color: Colors.white, fontSize: 20);
+    const textStyle3 = TextStyle(color: Colors.white, fontSize: 15);
     return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
@@ -113,7 +114,7 @@ class _FirstRouteState extends State<FirstRoute> {
                         children: [
                           ListTile(
                             title: Text("Order No.:${_orderNums[index]}",
-                                style: textStyle2),
+                                style: textStyle3),
                             dense: true,
                           ),
                           ListTile(
@@ -139,14 +140,21 @@ class _FirstRouteState extends State<FirstRoute> {
                           ListTile(
                             title: TextButton(
                               onPressed: () {},
-                              style: TextButton.styleFrom(
-                                  backgroundColor: Colors.purple),
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      const MaterialStatePropertyAll(
+                                          Colors.purple),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  ))),
                               child: const Text("\$ 2200", style: textStyle2),
                             ),
                             dense: true,
                           ),
                           const ListTile(
-                            title: Text("USA-CA", style: textStyle2),
+                            title: Text("USA-CA", style: textStyle3),
                             dense: true,
                           )
                         ],
@@ -156,8 +164,14 @@ class _FirstRouteState extends State<FirstRoute> {
                         child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const Image(
-                          image: AssetImage('assets/download.jpeg'),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: const Image(
+                              image: AssetImage('assets/download.jpeg'),
+                            ),
+                          ),
                         ),
                         Container(child: checkButtons(index))
                       ],
@@ -233,6 +247,18 @@ class SecondRoute extends StatelessWidget {
       color: Colors.white,
       fontSize: 15,
     );
+    const textStyle4 = TextStyle(
+      color: Colors.green,
+      fontSize: 15,
+    );
+    const textStyle5 = TextStyle(
+      color: Colors.red,
+      fontSize: 15,
+    );
+    const textStyle6 = TextStyle(
+      color: Colors.white,
+      fontSize: 20,
+    );
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -245,80 +271,88 @@ class SecondRoute extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-        Container(
-            margin: const EdgeInsets.fromLTRB(30, 0, 30, 30),
-            child: Image.asset(
-              'assets/download.jpeg',
-              height: 250,
-              width: 400,
-              scale: 0.2,
-            )),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SizedBox(
-                height: 150,
-                width: 150,
-                child: Stack(
-                  children: [
-                    Container(
-                      height: 150,
-                      width: 150,
-                      child: const CircularProgressIndicator(
-                          value: 0.69, color: Colors.purple),
-                    ),
-                    const Center(
-                      child: Text(
-                        'Progress',
-                        style: TextStyle(color: Colors.purple, fontSize: 20),
-                      ),
-                    )
-                  ],
-                )),
-            Container(
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  shape: BoxShape.circle),
-              child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.flash_on_outlined),
-                  color: Colors.white),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  shape: BoxShape.circle),
-              child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.search),
-                  color: Colors.white),
-            ),
-          ],
+        Image.asset(
+          'assets/download.jpeg',
         ),
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 50, horizontal: 0),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                  height: 150,
+                  width: 150,
+                  child: Stack(
+                    children: [
+                      const SizedBox(
+                        height: 150,
+                        width: 150,
+                        child: CircularProgressIndicator(
+                            value: 0.69, color: Colors.purple),
+                      ),
+                      Container(
+                        height: 150,
+                        width: 150,
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 40, horizontal: 20),
+                        child: Column(
+                          children: const [
+                            Text('47%',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 30)),
+                            Text(
+                              'Progress',
+                              style:
+                                  TextStyle(color: Colors.purple, fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  )),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                    shape: BoxShape.circle),
+                child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.flash_on_outlined),
+                    color: Colors.white),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                    shape: BoxShape.circle),
+                child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.search),
+                    color: Colors.white),
+              ),
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 50),
           child: Table(
-            border:
-                TableBorder.all(color: Colors.white, style: BorderStyle.solid),
             children: const [
               TableRow(
                 children: [
                   TableCell(
                       child: Text(
                     "Date",
-                    style: textStyle3,
+                    style: textStyle6,
                     textAlign: TextAlign.center,
                   )),
                   TableCell(
                       child: Text(
                     "Quantity",
-                    style: textStyle3,
+                    style: textStyle6,
                     textAlign: TextAlign.center,
                   )),
                   TableCell(
                       child: Text(
                     "Progress",
-                    style: textStyle3,
+                    style: textStyle6,
                     textAlign: TextAlign.center,
                   ))
                 ],
@@ -326,22 +360,16 @@ class SecondRoute extends StatelessWidget {
               TableRow(
                 children: [
                   TableCell(
-                      child: Padding(
-                    padding: EdgeInsets.all(.0),
-                    child: Text(
-                      "20/10/22",
-                      style: textStyle3,
-                      textAlign: TextAlign.center,
-                    ),
+                      child: Text(
+                    "20/10/22",
+                    style: textStyle3,
+                    textAlign: TextAlign.center,
                   )),
                   TableCell(
-                      child: Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Text(
-                      "4123",
-                      style: textStyle3,
-                      textAlign: TextAlign.center,
-                    ),
+                      child: Text(
+                    "4123",
+                    style: textStyle3,
+                    textAlign: TextAlign.center,
                   )),
                   TableCell(
                       child: ListTile(
@@ -353,7 +381,7 @@ class SecondRoute extends StatelessWidget {
                     ),
                     title: Text(
                       "+22%",
-                      style: textStyle3,
+                      style: textStyle4,
                       textAlign: TextAlign.center,
                     ),
                   ))
@@ -383,7 +411,7 @@ class SecondRoute extends StatelessWidget {
                     ),
                     title: Text(
                       "-2%",
-                      style: textStyle3,
+                      style: textStyle5,
                       textAlign: TextAlign.center,
                     ),
                   ))
@@ -413,7 +441,7 @@ class SecondRoute extends StatelessWidget {
                     ),
                     title: Text(
                       "+6%",
-                      style: textStyle3,
+                      style: textStyle4,
                       textAlign: TextAlign.center,
                     ),
                   ))
